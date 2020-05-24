@@ -10,7 +10,7 @@ Parameters:
   DomainName:
     Type: String
     Description: The website domain name.
-    Default: lroguet.example
+    Default: test.fiap.cicd
 
   PriceClass:
     Type: String

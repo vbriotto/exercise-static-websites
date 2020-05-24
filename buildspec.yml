@@ -1,0 +1,19 @@
+version: 0.2
+phases:
+  install: 
+    runtime-versions:
+      docker: 18
+    commands: 
+      - apt-get update -y
+      - apt-get install -y jq
+  build:
+    commands:
+      - echo "teste" >> elb.txt
+      - ls
+  post_build:
+    commands:
+      - echo "DONE!!!!"
+    
+artifacts:
+  files: 
+    - elb.txt
