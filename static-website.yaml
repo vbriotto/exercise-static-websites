@@ -44,3 +44,10 @@ Resources:
             Effect: Allow
             Resource: !Join [ "", [ "arn:aws:s3:::", !Ref TheBucket, "/*" ] ]
             Principal: "*"
+Outputs:
+  WebsiteURL:
+    Value: !GetAtt [S3Bucket, WebsiteURL]
+    Description: URL for website hosted on S3
+  S3Name:
+    Value: !Ref 'TheBucket'
+    Description: Name of S3 bucket
