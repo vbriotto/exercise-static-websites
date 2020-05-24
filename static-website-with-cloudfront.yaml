@@ -86,3 +86,10 @@ Resources:
             Resource: !Join [ "", [ "arn:aws:s3:::", !Ref TheBucket, "/*" ] ]
             Principal:
               CanonicalUser: !GetAtt TheCloudFrontOriginAccessIdentity.S3CanonicalUserId
+Outputs:
+  WebsiteURL:
+    Value: !GetAtt [TheCloudFrontDistribution, DomainName]
+    Description: URL for website hosted on S3
+  S3Name:
+    Value: !Ref 'TheBucket'
+    Description: Name of S3 bucket
