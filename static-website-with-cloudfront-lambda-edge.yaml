@@ -47,8 +47,8 @@ Resources:
           TargetOriginId: the-s3-bucket
           ViewerProtocolPolicy: redirect-to-https
           LambdaFunctionAssociations:
-            - EventType: origin-request
-              LambdaFunctionARN: !Ref TheOriginRequestLambdaFunctionVersion
+          - EventType: origin-request
+            LambdaFunctionARN: !Ref TheOriginRequestLambdaFunctionVersion
         DefaultRootObject: index.html
         CustomErrorResponses:
           - ErrorCachingMinTTL: 300
@@ -145,3 +145,11 @@ Resources:
               - sts:AssumeRole
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+
+Outputs:
+  WebsiteURL:
+    Value: !GetAtt [TheCloudFrontDistribution, DomainName]
+    Description: URL for website hosted on S3
+  S3Name:
+    Value: !Ref 'TheBucket'
+    Description: Name of S3 bucket
