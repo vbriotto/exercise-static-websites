@@ -10,6 +10,10 @@ phases:
     commands:
       - echo "teste" >> elb.txt
       - ls
+      - stackName="static-web-site"
+      - bucket=$(aws cloudformation --region us-east-1 describe-stacks --stack-name $stackName --query "Stacks[0].Outputs[?OutputKey=='S3Name'].OutputValue" --output text)
+      - aws s3 cp 404.html s3://$bucket/404.html
+      - aws s3 cp index.html s3://$bucket/index.html
   post_build:
     commands:
       - echo "DONE!!!!"
