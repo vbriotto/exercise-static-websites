@@ -11,7 +11,7 @@ phases:
       - echo "teste" >> elb.txt
       - ls
       - echo $stackName
-      - aws cloudformation --region us-east-1 describe-stacks --stack-name $stackNam
+      - aws cloudformation --region us-east-1 describe-stacks --stack-name $stackName
       - bucket=$(aws cloudformation --region us-east-1 describe-stacks --stack-name $stackName --query "Stacks[0].Outputs[?OutputKey=='S3Name'].OutputValue" --output text)
       - aws s3 cp 404.html s3://$bucket/404.html
       - aws s3 cp index.html s3://$bucket/index.html
